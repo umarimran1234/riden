@@ -33,7 +33,7 @@ export default function BuiltForRiders() {
                             "In-app driver chat & status updates",
                             "Digital payment with fare breakdown",
                         ].map((feature, index) => (
-                            <li key={index} className="flex items-start gap-2">
+                            <li key={index} className="flex items-center gap-2">
                                 <CarFront className="text-[#F80F0F] mt-1" />
                                 {feature}
                             </li>

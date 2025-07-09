@@ -3,10 +3,21 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import Image from "next/image"
+import { Button } from "./ui/button"
 
 export default function AppDownloadSection() {
     const [activeApp, setActiveApp] = useState<"driver" | "passenger">("driver")
-
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
+            },
+        },
+    }
     return (
         <section className="relative bg-white min-h-[70vh] lg:min-h-[80vh] overflow-hidden">
             {/* Background Image */}
@@ -26,7 +37,7 @@ export default function AppDownloadSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[60vh]">
                     {/* Left Content */}
                     <motion.div
-                        className="space-y-6 lg:space-y-8 text-center lg:text-left"
+                        className="space-y-6 lg:space-y-8 text-left lg:text-left"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -67,7 +78,7 @@ export default function AppDownloadSection() {
 
                         {/* App Toggle Buttons */}
                         <motion.div
-                            className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center lg:justify-start"
+                            className="flex flex-row sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 justify-start lg:justify-start"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
@@ -75,7 +86,7 @@ export default function AppDownloadSection() {
                         >
                             <motion.button
                                 onClick={() => setActiveApp("driver")}
-                                className={`px-6 sm:px-8 py-3 sm:py-4  font-bold text-sm sm:text-base font-outfit transition-all duration-300 ${activeApp === "driver"
+                                className={`px-6 sm:px-8 py-3 sm:py-4   text-sm sm:text-base font-outfit transition-all duration-300 ${activeApp === "driver"
                                     ? "border-b-2 border-[#F80F0F] text-white shadow-lg"
                                     : "bg-transparent border-b-2 border-gray-400 text-gray-200 hover:border-[#F80F0F] hover:text-[#F80F0F]"
                                     }`}
@@ -87,7 +98,7 @@ export default function AppDownloadSection() {
 
                             <motion.button
                                 onClick={() => setActiveApp("passenger")}
-                                className={`px-6 sm:px-8 py-3 sm:py-4  font-bold text-sm sm:text-base font-outfit transition-all duration-300 ${activeApp === "passenger"
+                                className={`px-6 sm:px-8 py-3 sm:py-4   text-sm sm:text-base font-outfit transition-all duration-300 ${activeApp === "passenger"
                                     ? " border-b-2 border-[#F80F0F] text-white shadow-lg"
                                     : "bg-transparent border-b-2 border-gray-400 text-gray-200 hover:border-[#F80F0F] hover:text-[#F80F0F]"
                                     }`}
@@ -100,48 +111,45 @@ export default function AppDownloadSection() {
 
                         {/* App Store Buttons */}
                         <motion.div
-                            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.5 }}
-                            viewport={{ once: true }}
+                            className="flex flex-row  sm:flex-row gap-3 justify-center sm:gap-4 lg:gap-6 mb-12 sm:mb-16 lg:mb-20 w-full max-w-md sm:max-w-none"
+                            variants={itemVariants}
                         >
-                            {/* Google Play Store */}
                             <motion.div
-                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileHover={{ scale: 1.05, y: -3 }}
                                 whileTap={{ scale: 0.95 }}
                                 transition={{ type: "spring", stiffness: 300 }}
+                                className="w-full sm:w-auto mb-5"
                             >
-                                <div className="bg-black/80 backdrop-blur-sm border border-gray-500 hover:border-gray-300 rounded-xl px-4 sm:px-6 py-3 sm:py-4 flex items-center space-x-3 sm:space-x-4 cursor-pointer transition-all duration-300 group min-w-[160px] sm:min-w-[180px]">
-                                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <span className="text-white text-lg sm:text-xl">▶</span>
-                                    </div>
-                                    <div className="text-left">
-                                        <div className="text-xs sm:text-sm text-gray-300 font-outfit">GET IT ON</div>
-                                        <div className="font-bold text-sm sm:text-base text-white font-outfit group-hover:text-[#F80F0F] transition-colors duration-200">
-                                            Google Play
-                                        </div>
-                                    </div>
-                                </div>
+
+                                <Button className=" bg-transparent hover:bg-transparent mt-5 text-white   px-4 sm:px-6 lg:px-8 py-3 lg:py-4 rounded-xl flex items-center justify-center sm:justify-start space-x-3 lg:space-x-4 text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 w-full sm:w-auto">
+                                    <Image src={"/googlePlay.png"} width={200} height={200} alt="googlePlay" />
+                                    {/* <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-white text-lg lg:text-xl">▶</span>
+              </div>
+              <div className="text-left">
+                <div className="text-xs lg:text-sm text-gray-400">GET IT ON</div>
+                <div className="font-bold text-sm lg:text-base">Google Play</div>
+              </div> */}
+                                </Button>
                             </motion.div>
 
-                            {/* Apple App Store */}
                             <motion.div
-                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileHover={{ scale: 1.05, y: -3 }}
                                 whileTap={{ scale: 0.95 }}
-                                transition={{ type: "spring", stiffness: 300 }}
+                                transition={{ type: "tween", stiffness: 300 }}
+                                className="w-full sm:w-auto"
                             >
-                                <div className="bg-black/80 backdrop-blur-sm border border-gray-500 hover:border-gray-300 rounded-xl px-4 sm:px-6 py-3 sm:py-4 flex items-center space-x-3 sm:space-x-4 cursor-pointer transition-all duration-300 group min-w-[160px] sm:min-w-[180px]">
-                                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <span className="text-white text-lg sm:text-xl">🍎</span>
-                                    </div>
-                                    <div className="text-left">
-                                        <div className="text-xs sm:text-sm text-gray-300 font-outfit">Download on the</div>
-                                        <div className="font-bold text-sm sm:text-base text-white font-outfit group-hover:text-[#F80F0F] transition-colors duration-200">
-                                            App Store
-                                        </div>
-                                    </div>
-                                </div>
+                                <Button className=" bg-transparent hover:bg-transparent mt-5  px-4 sm:px-6 lg:px-8 py-3 lg:py-4 rounded-xl flex items-center justify-center sm:justify-start space-x-3 lg:space-x-4 text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 w-full sm:w-auto">
+                                    <Image src={"/appleStore.png"} width={200} height={200} alt="googlePlay" />
+
+                                    {/* <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-white text-lg lg:text-xl">🍎</span>
+              </div>
+              <div className="text-left">
+                <div className="text-xs lg:text-sm text-gray-400">Download on the</div>
+                <div className="font-bold text-sm lg:text-base">App Store</div>
+              </div> */}
+                                </Button>
                             </motion.div>
                         </motion.div>
                     </motion.div>
@@ -244,7 +252,7 @@ export default function AppDownloadSection() {
                             </motion.div>
 
                             {/* Enhanced Floating Elements */}
-                            <motion.div
+                            {/* <motion.div
                                 className="absolute -top-4 -right-4 w-12 h-12 bg-[#F80F0F] rounded-full flex items-center justify-center shadow-lg z-20"
                                 animate={{
                                     scale: [1, 1.2, 1],
@@ -257,9 +265,9 @@ export default function AppDownloadSection() {
                                 }}
                             >
                                 <span className="text-white text-lg">📱</span>
-                            </motion.div>
+                            </motion.div> */}
 
-                            <motion.div
+                            {/* <motion.div
                                 className="absolute -bottom-6 -left-6 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg z-20"
                                 animate={{
                                     y: [0, -8, 0],
@@ -273,7 +281,7 @@ export default function AppDownloadSection() {
                                 }}
                             >
                                 <span className="text-[#F80F0F] text-lg">⭐</span>
-                            </motion.div>
+                            </motion.div> */}
 
                             {/* Additional red accent elements */}
                             <motion.div
