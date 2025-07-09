@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Mail, Phone, Clock } from "lucide-react";
 import Image from "next/image";
+import PhoneInput from 'react-phone-input-2';
+
+import 'react-phone-input-2/lib/style.css';
 
 interface FormData {
     firstName: string;
@@ -250,17 +253,28 @@ export default function ContactPage() {
                                                     >
                                                         PHONE NUMBER
                                                     </label>
-                                                    <input
-                                                        type="tel"
-                                                        id="phone"
-                                                        name="phone"
+
+                                                    <PhoneInput
+                                                        country={'ca'} // Default Canada
                                                         value={formData.phone}
-                                                        onChange={handleInputChange}
-                                                        className={`w-full px-4 py-3 bg-white border-2 rounded-lg font-outfit transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#F80F0F] ${errors.phone ? "border-red-500" : "border-gray-300 focus:border-[#F80F0F]"
-                                                            }`}
-                                                        placeholder="Enter your phone number"
+                                                        onChange={(value) => {
+                                                            const event = {
+                                                                target: {
+                                                                    name: 'phone',
+                                                                    value: value,
+                                                                },
+                                                            } as unknown as React.ChangeEvent<HTMLInputElement>;
+                                                            handleInputChange(event);
+                                                        }}
+                                                        inputClass={`w-full px-4 py-3 bg-white border-2 rounded-lg font-outfit transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#F80F0F] ${errors.phone ? "border-red-500" : "border-gray-300 focus:border-[#F80F0F]"}`}
+                                                        inputStyle={{ width: '100%' }}
+                                                        countryCodeEditable={false}
+                                                        enableSearch
                                                     />
-                                                    {errors.phone && <p className="mt-1 text-sm text-red-500 font-outfit">{errors.phone}</p>}
+
+                                                    {errors.phone && (
+                                                        <p className="mt-1 text-sm text-red-500 font-outfit">{errors.phone}</p>
+                                                    )}
                                                 </div>
                                             </div>
 

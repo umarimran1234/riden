@@ -2,10 +2,12 @@
 import React, { useState } from 'react'
 import { motion } from "framer-motion"
 import Link from 'next/link'
+import QRDownloadPopup from './qr-poppup'
 import { Menu, X } from 'lucide-react'
 function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+    const [isPopupOpen, setIsPopupOpen] = useState(false)
+    const [appType, setAppType] = useState<"driver" | "passenger">("passenger")
     const navVariants = {
         hidden: { opacity: 0, y: -20 },
         visible: {
@@ -30,7 +32,7 @@ function Header() {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
                 {/* Logo */}
-                <div className="text-[#F80F0F]">RIDEN</div>
+                <div className="text-[#F80F0F]"> <Link href={"/"} > RIDEN</Link> </div>
 
                 {/* Links */}
                 <div className="lg:flex items-center gap-6 text-sm lg:text-base font-outfit hidden sm:hidden">
@@ -51,7 +53,7 @@ function Header() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
 
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <motion.div onClick={() => setIsPopupOpen(true)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <div className="relative overflow-hidden bg-[#F80F0F] hover:bg-[#F80F0F] text-white px-4 lg:px-6 py-2 lg:p-2 rounded-md font-medium transition-all duration-300 text-sm lg:text-base font-outfit cursor-pointer group">
                         <div className="relative h-[1.2em]"> {/* Height controls vertical space */}
                             {/* Top text that moves up */}
@@ -116,7 +118,7 @@ function Header() {
                             className="relative overflow-hidden bg-[#F80F0F] text-white px-8 py-3 rounded-full font-medium text-lg cursor-pointer"
                             onClick={() => setMobileMenuOpen(false)}
                         >
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <motion.div onClick={() => setIsPopupOpen(true)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <div className="relative overflow-hidden bg-[#F80F0F] hover:bg-[#F80F0F] text-white px-4 lg:px-6 py-2 lg:py-2.5 rounded-full font-medium transition-all duration-300 text-sm lg:text-base font-outfit cursor-pointer group">
                                     <div className="relative">
                                         <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
@@ -134,7 +136,10 @@ function Header() {
                         </div>
                     </div>
                 </motion.div>
-            )}</>
+
+            )}
+            <QRDownloadPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} appType={appType} />
+        </>
     )
 }
 
