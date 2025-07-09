@@ -1,26 +1,25 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { motion } from "framer-motion"
-import { useState } from "react"
-import { Mail, Phone, Clock } from "lucide-react"
-import Image from "next/image"
+import type React from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Mail, Phone, Clock } from "lucide-react";
+import Image from "next/image";
 
 interface FormData {
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    message: string
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    message: string;
 }
 
 interface FormErrors {
-    firstName?: string
-    lastName?: string
-    email?: string
-    phone?: string
-    message?: string
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+    message?: string;
 }
 
 export default function ContactPage() {
@@ -30,93 +29,87 @@ export default function ContactPage() {
         email: "",
         phone: "",
         message: "",
-    })
-    const [activeApp, setActiveApp] = useState<"driver" | "passenger">("driver")
-
-    const [errors, setErrors] = useState<FormErrors>({})
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+    });
+    const [activeApp, setActiveApp] = useState<"driver" | "passenger">("driver");
+    const [errors, setErrors] = useState<FormErrors>({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
     const validateForm = (): boolean => {
-        const newErrors: FormErrors = {}
+        const newErrors: FormErrors = {};
 
         if (!formData.firstName.trim()) {
-            newErrors.firstName = "First name is required"
+            newErrors.firstName = "First name is required";
         }
 
         if (!formData.lastName.trim()) {
-            newErrors.lastName = "Last name is required"
+            newErrors.lastName = "Last name is required";
         }
 
         if (!formData.email.trim()) {
-            newErrors.email = "Email is required"
+            newErrors.email = "Email is required";
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = "Please enter a valid email address"
+            newErrors.email = "Please enter a valid email address";
         }
 
         if (!formData.phone.trim()) {
-            newErrors.phone = "Phone number is required"
+            newErrors.phone = "Phone number is required";
         } else if (!/^[+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/[\s\-$$$$]/g, ""))) {
-            newErrors.phone = "Please enter a valid phone number"
+            newErrors.phone = "Please enter a valid phone number";
         }
 
         if (!formData.message.trim()) {
-            newErrors.message = "Message is required"
+            newErrors.message = "Message is required";
         } else if (formData.message.trim().length < 10) {
-            newErrors.message = "Message must be at least 10 characters long"
+            newErrors.message = "Message must be at least 10 characters long";
         }
 
-        setErrors(newErrors)
-        return Object.keys(newErrors).length === 0
-    }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target
-        setFormData((prev) => ({ ...prev, [name]: value }))
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
 
-        // Clear error when user starts typing
         if (errors[name as keyof FormErrors]) {
-            setErrors((prev) => ({ ...prev, [name]: undefined }))
+            setErrors((prev) => ({ ...prev, [name]: undefined }));
         }
-    }
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
+        e.preventDefault();
 
         if (!validateForm()) {
-            return
+            return;
         }
 
-        setIsSubmitting(true)
-        setSubmitStatus("idle")
+        setIsSubmitting(true);
+        setSubmitStatus("idle");
 
         try {
-            // Simulate API call
-            await new Promise((resolve) => setTimeout(resolve, 2000))
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+            console.log("Form submitted:", formData);
 
-            // Here you would typically send the data to your API endpoint
-            console.log("Form submitted:", formData)
-
-            setSubmitStatus("success")
+            setSubmitStatus("success");
             setFormData({
                 firstName: "",
                 lastName: "",
                 email: "",
                 phone: "",
                 message: "",
-            })
+            });
         } catch (error) {
-            console.error("Submission error:", error)
-            setSubmitStatus("error")
+            console.error("Submission error:", error);
+            setSubmitStatus("error");
         } finally {
-            setIsSubmitting(false)
+            setIsSubmitting(false);
         }
-    }
+    };
 
     return (
         <>
-
-            <div className="min-h-screen h-5/6  bg-black relative overflow-hidden">
+            <div className="min-h-screen bg-black relative overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <div className="absolute inset-0 bg-black/60 z-10"></div>
@@ -126,9 +119,6 @@ export default function ContactPage() {
                 </div>
 
                 <div className="relative z-20 min-h-screen flex flex-col">
-                    {/* Header */}
-
-
                     {/* Main Content */}
                     <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
                         <div className="max-w-7xl mx-auto">
@@ -141,9 +131,11 @@ export default function ContactPage() {
                                     transition={{ duration: 0.8, ease: "easeOut" }}
                                 >
                                     <div>
-                                        <p className="text-[#F80F0F] text-2xl sm:text-sm md:text-sm lg:text-sm font-outfit tracking-wide" >CONTACT US</p>
+                                        <p className="text-[#F80F0F] text-sm sm:text-base lg:text-lg font-outfit tracking-wide">
+                                            CONTACT US
+                                        </p>
                                         <motion.h1
-                                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl  text-white mb-6 sm:mb-8 font-bebas tracking-wide leading-tight"
+                                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-6 sm:mb-8 font-bebas tracking-wide leading-tight"
                                             initial={{ opacity: 0, y: 30 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.8, delay: 0.2 }}
@@ -152,19 +144,17 @@ export default function ContactPage() {
                                         </motion.h1>
 
                                         <motion.p
-                                            className="text-white text-base sm:text-lg lg:text-xl font-outfit leading-relaxed"
+                                            className="text-white text-sm sm:text-base lg:text-lg font-outfit leading-relaxed"
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.6, delay: 0.4 }}
                                         >
-                                            Questions? Feedback? Praise? We'd love to hear from you! Whether you're a rider looking for support
-                                            or a driver needing assistance, our team is here to help. Send us a message and we'll respond as
-                                            quickly as possible.
+                                            Have questions, feedback, or need help with your ride? We’re always ready to assist you. Whether
+                                            it’s a lost item, payment issue, or just a suggestion to make Riden better — feel free to reach
+                                            out. Our support team is available <span className="text-[#F80F0F]">24/7</span> to make sure your
+                                            experience stays smooth and worry-free.
                                         </motion.p>
                                     </div>
-
-                                    {/* Contact Info */}
-
                                 </motion.div>
 
                                 {/* Contact Form */}
@@ -181,7 +171,7 @@ export default function ContactPage() {
                                                 <div>
                                                     <label
                                                         htmlFor="firstName"
-                                                        className="block text-sm  text-gray-800 mb-2 font-outfit tracking-wide"
+                                                        className="block text-sm text-gray-800 mb-2 font-outfit tracking-wide"
                                                     >
                                                         FIRST NAME
                                                     </label>
@@ -203,7 +193,7 @@ export default function ContactPage() {
                                                 <div>
                                                     <label
                                                         htmlFor="lastName"
-                                                        className="block text-sm  text-gray-800 mb-2 font-outfit tracking-wide"
+                                                        className="block text-sm text-gray-800 mb-2 font-outfit tracking-wide"
                                                     >
                                                         LAST NAME
                                                     </label>
@@ -217,7 +207,9 @@ export default function ContactPage() {
                                                             }`}
                                                         placeholder="Enter your last name"
                                                     />
-                                                    {errors.lastName && <p className="mt-1 text-sm text-red-500 font-outfit">{errors.lastName}</p>}
+                                                    {errors.lastName && (
+                                                        <p className="mt-1 text-sm text-red-500 font-outfit">{errors.lastName}</p>
+                                                    )}
                                                 </div>
                                             </div>
 
@@ -226,7 +218,7 @@ export default function ContactPage() {
                                                 <div>
                                                     <label
                                                         htmlFor="email"
-                                                        className="block text-sm  text-gray-800 mb-2 font-outfit tracking-wide"
+                                                        className="block text-sm text-gray-800 mb-2 font-outfit tracking-wide"
                                                     >
                                                         EMAIL ADDRESS
                                                     </label>
@@ -246,7 +238,7 @@ export default function ContactPage() {
                                                 <div>
                                                     <label
                                                         htmlFor="phone"
-                                                        className="block text-sm  text-gray-800 mb-2 font-outfit tracking-wide"
+                                                        className="block text-sm text-gray-800 mb-2 font-outfit tracking-wide"
                                                     >
                                                         PHONE NUMBER
                                                     </label>
@@ -268,7 +260,7 @@ export default function ContactPage() {
                                             <div>
                                                 <label
                                                     htmlFor="message"
-                                                    className="block text-sm font-outfit text-gray-800 mb-2  tracking-wide"
+                                                    className="block text-sm font-outfit text-gray-800 mb-2 tracking-wide"
                                                 >
                                                     MESSAGE
                                                 </label>
@@ -290,7 +282,7 @@ export default function ContactPage() {
                                                 <motion.button
                                                     type="submit"
                                                     disabled={isSubmitting}
-                                                    className={`relative overflow-hidden px-8 sm:px-12 py-3 sm:py-4 rounded-full  text-sm sm:text-base font-outfit tracking-wide transition-all duration-300 shadow-lg hover:shadow-xl ${isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-[#F80F0F] hover:bg-red-600 text-white"
+                                                    className={`relative overflow-hidden px-8 sm:px-12 py-3 sm:py-4 rounded-full text-sm sm:text-base font-outfit tracking-wide transition-all duration-300 shadow-lg hover:shadow-xl ${isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-[#F80F0F] hover:bg-red-600 text-white"
                                                         }`}
                                                     whileHover={!isSubmitting ? { scale: 1.05, y: -2 } : {}}
                                                     whileTap={!isSubmitting ? { scale: 0.95 } : {}}
@@ -340,8 +332,8 @@ export default function ContactPage() {
                     </main>
                 </div>
             </div>
-            <section className="relative min-h-screen mt-10 lg:mt-80    bg-white  lg:min-h-screen overflow-hidden">
 
+            <section className="relative min-h-[50vh] sm:min-h-[60vh] lg:min-h-[70vh] bg-white overflow-hidden">
                 <div className="absolute inset-0">
                     <Image
                         src="/backgournd.png"
@@ -350,14 +342,12 @@ export default function ContactPage() {
                         className="object-cover object-center"
                         priority
                     />
-                    {/* Additional overlay for better text readability */}
-                    {/* <div className="absolute inset-0 bg-black/20"></div> */}
                 </div>
-                <div className="relative z-10 max-w-7xl mt-7  mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[60vh]">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                         {/* Left Content */}
                         <motion.div
-                            className="space-y-6 lg:space-y-8 text-left lg:text-left"
+                            className="space-y-6 lg:space-y-8 text-left"
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -376,7 +366,7 @@ export default function ContactPage() {
 
                             {/* Main Heading */}
                             <motion.h2
-                                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl  text-white mb-4 sm:mb-6 font-bebas tracking-wide leading-tight"
+                                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 sm:mb-6 font-bebas tracking-wide leading-tight"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -387,78 +377,89 @@ export default function ContactPage() {
 
                             {/* Subtext */}
                             <motion.p
-                                className="text- text-white sm:text-lg lg:text-sm font-outfit leading-relaxed mb-6 sm:mb-8"
+                                className="text-white text-sm sm:text-base lg:text-lg font-outfit leading-relaxed mb-6 sm:mb-8"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.3 }}
                                 viewport={{ once: true }}
                             >
-                                et quick help and friendly support from our dedicated team—day or night, whenever you need us.
+                                Have questions, feedback, or need help with your ride? We’re always ready to assist you. Whether it’s a
+                                lost item, payment issue, or just a suggestion to make Riden better — feel free to reach out. Our
+                                support team is available <span className="text-[#F80F0F]">24/7</span> to make sure your experience
+                                stays smooth and worry-free.
                             </motion.p>
 
-                            {/* App Toggle Buttons */}
+                            {/* Contact Info */}
                             <motion.div
-                                className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center lg:justify-start"
+                                className="space-y-4 sm:space-y-6"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.4 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
                                 viewport={{ once: true }}
                             >
+                                {/* Phone Contact */}
                                 <motion.div
-                                    className="space-y-4 sm:space-y-6"
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.8, delay: 0.4 }}
-                                    viewport={{ once: true }}
+                                    className="flex items-center space-x-4 justify-start group"
+                                    whileHover={{ x: 5 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
                                 >
-                                    {/* Phone Contact */}
-                                    <motion.div
-                                        className="flex items-center space-x-4 justify-start lg:justify-start group"
-                                        whileHover={{ x: 5 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                    >
-                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                                            <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-[#F80F0F]" />
-                                        </div>
-                                        <div>
-                                            <a
-                                                href="tel:6049006809"
-                                                className="text-white text-lg sm:text-xl lg:text-2xl font-bold font-outfit hover:text-gray-200 transition-colors duration-200"
-                                            >
-                                                6049006809
-                                            </a>
-                                        </div>
-                                    </motion.div>
+                                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                                        <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-[#F80F0F]" />
+                                    </div>
+                                    <div>
+                                        <a
+                                            href="tel:6049006809"
+                                            className="text-white text-base sm:text-lg lg:text-xl font-bold font-outfit hover:text-gray-200 transition-colors duration-200"
+                                        >
+                                            6049006809
+                                        </a>
+                                    </div>
+                                </motion.div>
 
-                                    {/* Email Contact */}
-                                    <motion.div
-                                        className="flex items-center space-x-4 justify-start lg:justify-start group"
-                                        whileHover={{ x: 5 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                    >
-                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                                            <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-[#F80F0F]" />
-                                        </div>
-                                        <div>
-                                            <a
-                                                href="mailto:rideonlinetech@gmail.com"
-                                                className="text-white text-lg sm:text-xl lg:text-2xl font-bold font-outfit hover:text-gray-200 transition-colors duration-200 break-all sm:break-normal"
-                                            >
-                                                rideonlinetech@gmail.com
-                                            </a>
-                                        </div>
-                                    </motion.div>
+                                {/* Email Contact */}
+                                <motion.div
+                                    className="flex items-center space-x-4 justify-start group"
+                                    whileHover={{ x: 5 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                >
+                                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                                        <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-[#F80F0F]" />
+                                    </div>
+                                    <div>
+                                        <a
+                                            href="mailto:contact@riden.online"
+                                            className="text-white text-base sm:text-lg lg:text-xl font-bold font-outfit hover:text-gray-200 transition-colors duration-200 break-all sm:break-normal"
+                                        >
+                                            contact@riden.online
+                                        </a>
+                                    </div>
+                                </motion.div>
+
+                                {/* Address Contact */}
+                                <motion.div
+                                    className="flex items-center space-x-4 justify-start group"
+                                    whileHover={{ x: 5 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                >
+                                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                                        <Clock className="w-6 h-6 sm:w-7 sm:h-7 text-[#F80F0F]" />
+                                    </div>
+                                    <div>
+                                        <p className="text-white text-base sm:text-lg lg:text-xl font-bold font-outfit">
+                                            219/15850 26 ave Vancouver, Canada
+                                        </p>
+                                    </div>
                                 </motion.div>
                             </motion.div>
-
-                            {/* App Store Buttons */}
-
                         </motion.div>
-
 
                         {/* Right Side - Support Representative Image */}
                         <motion.div
                             className="relative w-full max-w-lg h-auto"
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            viewport={{ once: true }}
                         >
                             <div className="relative rounded-2xl overflow-hidden">
                                 <Image
@@ -472,11 +473,9 @@ export default function ContactPage() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-red-900/20 via-transparent to-transparent"></div>
                             </div>
                         </motion.div>
-
-
                     </div>
                 </div>
             </section>
         </>
-    )
+    );
 }

@@ -13,33 +13,33 @@ interface FAQItem {
 const faqData: FAQItem[] = [
     {
         id: 1,
-        question: "HOW DO I BOOK A RIDE WITH RIDEN?",
+        question: "What is this app for?",
         answer:
-            "Booking a ride with Riden is simple! Download our app, create an account, enter your pickup and destination locations, choose your ride type, and confirm your booking. A driver will be assigned to you within minutes, and you can track their arrival in real-time.",
+            "Riden is a ride-booking app that helps you find safe and quick rides anytime you need.",
     },
     {
         id: 2,
-        question: "HOW ARE FARES CALCULATED?",
+        question: "Where can I use this app?",
         answer:
-            "Fares are based on distance, time, ride type, and current demand. You'll always see the price before confirming your ride.",
+            "You can use Riden in Vancouver, Canada. We’re growing and will be in more cities soon!",
     },
     {
         id: 3,
-        question: "CAN I SCHEDULE A RIDE IN ADVANCE?",
+        question: "How do I book a ride?",
         answer:
-            "Yes! You can schedule rides up to 30 days in advance. Simply select 'Schedule for later' when booking, choose your preferred date and time, and we'll have a driver ready for you. This feature is perfect for airport trips, important meetings, or any time you need guaranteed transportation.",
+            "Just open the app, select your pickup point and destination, then tap the “Book Ride” button.",
     },
     {
         id: 4,
-        question: "IS RIDEN AVAILABLE IN MY CITY?",
+        question: "How do I pay for my ride?",
         answer:
-            "Riden is currently available in major cities across Canada, including Toronto, Vancouver, Montreal, Calgary, and Ottawa. We're constantly expanding to new cities. Check our app or website to see if we're available in your area, and sign up for notifications when we launch in new locations.",
+            "You can pay through the app using your card, or other secure payment options offered.",
     },
     {
         id: 5,
-        question: "HOW CAN I BECOME A RIDEN DRIVER?",
+        question: ": How do I talk to my driver?",
         answer:
-            "To become a Riden driver, you must be at least 21 years old, have a valid driver's license, pass our background check, and have access to a qualifying vehicle. Apply through our driver app, complete the verification process, and start earning on your own schedule. We provide full support and training to get you started.",
+            " After booking a ride, you can call or message your driver directly from the app.",
     },
 ]
 

@@ -21,9 +21,9 @@ const testimonials: Testimonial[] = [
         name: "MARVIN MCKINNEY",
         title: "Marketing Director",
         company: "UrbanWear",
-        testimonial: "BEST SERVICES EVER!",
+        testimonial: "Easy and Quick Rides",
         rating:
-            "Riden has completely transformed my daily commute. The drivers are professional, the cars are always clean, and the app is incredibly user-friendly. I've been using it for over 6 months now and couldn't be happier!",
+            "Riden makes getting around so easy! I always find a driver within minutes, even during busy hours",
         avatar: "/Ellipse 8.png",
     },
     {
@@ -31,9 +31,9 @@ const testimonials: Testimonial[] = [
         name: "DARRELL STEWARD",
         title: "Marketing Director",
         company: "UrbanWear",
-        testimonial: "BEST SERVICES EVER!",
+        testimonial: "Safe and Reliable",
         rating:
-            "As someone who travels frequently for business, Riden has been a game-changer. Reliable, safe, and always on time. The real-time tracking gives me peace of mind, and the drivers are always courteous.",
+            "Safe, fast, and affordable. I’ve never had a bad experience with Riden!",
         avatar: "/Ellipse 9.png",
     },
     {
@@ -41,21 +41,21 @@ const testimonials: Testimonial[] = [
         name: "SARAH JOHNSON",
         title: "Product Manager",
         company: "TechCorp",
-        testimonial: "AMAZING EXPERIENCE!",
+        testimonial: "Super Convenient App!",
         rating:
-            "I love how easy it is to book a ride with Riden. The interface is intuitive, and I can always count on getting a ride when I need one. The safety features make me feel secure, especially during late-night trips.",
+            "I love how I can track my driver and pay through the app. It saves me so much time and stress.",
         avatar: "/Ellipse 8.png",
     },
-    {
-        id: 4,
-        name: "MICHAEL CHEN",
-        title: "Software Engineer",
-        company: "StartupXYZ",
-        testimonial: "HIGHLY RECOMMENDED!",
-        rating:
-            "Riden's commitment to safety and quality is evident in every ride. The drivers are well-trained, the vehicles are maintained excellently, and the customer service is top-notch. Definitely my go-to ride service!",
-        avatar: "/Ellipse 9.png",
-    },
+    // {
+    //     id: 4,
+    //     name: "MICHAEL CHEN",
+    //     title: "Software Engineer",
+    //     company: "StartupXYZ",
+    //     testimonial: "HIGHLY RECOMMENDED!",
+    //     rating:
+    //         "Riden's commitment to safety and quality is evident in every ride. The drivers are well-trained, the vehicles are maintained excellently, and the customer service is top-notch. Definitely my go-to ride service!",
+    //     avatar: "/Ellipse 9.png",
+    // },
 ]
 
 export default function TestimonialsSlider() {

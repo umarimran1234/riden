@@ -69,7 +69,7 @@ export default function Footer() {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        <div className="text-2xl sm:text-3xl font-bold text-[#F80F0F] font-bebas tracking-wider">RIDEN</div>
+                        <div className="text-2xl sm:text-3xl  text-[#F80F0F] font-audiowide tracking-wider">RIDEN</div>
 
                         <p className="text-gray-700 text-sm sm:text-base font-outfit leading-relaxed max-w-xs">
                             Riden is an online platform. We do not participate in interactions between users — all ride requests are
@@ -177,7 +177,7 @@ export default function Footer() {
 
                         {/* Address Section */}
                         <div className="space-y-3">
-                            <h4 className="text-sm font-bold text-gray-800 font-bebas tracking-wide">ADDRESS</h4>
+                            <h4 className="text-sm  text-black font-bebas tracking-wide">ADDRESS</h4>
                             <motion.div
                                 className="inline-flex items-center space-x-2 bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm"
                                 whileHover={{ scale: 1.02, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}

@@ -15,6 +15,7 @@ import FAQSection from "@/components/faq-section"
 import AppDownloadSection from "@/components/section7"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
+import SocialCards from "@/components/socialCards"
 
 export default function RidenLanding() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -105,7 +106,8 @@ export default function RidenLanding() {
             className="text-white text-sm sm:text-lg md:text-xl lg:text-2xl  sm:max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 sm:px-0"
             variants={itemVariants}
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+            Need a quick and safe ride? Riden is here to help!
+            Book rides in minutes, track your driver, and pay with ease.
           </motion.p>
         </motion.div>
 
@@ -415,6 +417,7 @@ export default function RidenLanding() {
           </div>
         </motion.div>
       </motion.main>
+      {/* <SocialCards /> */}
 
       {/* Safety Ticker */}
       <motion.div
