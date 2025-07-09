@@ -98,14 +98,14 @@ function Header() {
                 >
                     <div className="flex flex-col items-center justify-center h-full space-y-8">
                         <Link
-                            href="#"
+                            href="/about"
                             className="text-white hover:text-[#F80F0F] transition-colors duration-300 font-medium text-xl"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             About us
                         </Link>
                         <Link
-                            href="#"
+                            href="/contact"
                             className="text-white hover:text-[#F80F0F] transition-colors duration-300 font-medium text-xl"
                             onClick={() => setMobileMenuOpen(false)}
                         >
@@ -129,7 +129,8 @@ function Header() {
 
                         <div className="flex  items-center space-x-2 border border-white px-4 py-2 rounded-full text-sm font-medium">
                             <span className='text-white' >🇨🇦</span>
-                            <span>Exclusively in Canada</span>
+                            <span className='text-white' >Exclusively in Canada</span>
+
                         </div>
                     </div>
                 </motion.div>
