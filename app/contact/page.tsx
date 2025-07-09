@@ -30,7 +30,6 @@ export default function ContactPage() {
         phone: "",
         message: "",
     });
-    const [activeApp, setActiveApp] = useState<"driver" | "passenger">("driver");
     const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
@@ -54,7 +53,7 @@ export default function ContactPage() {
 
         if (!formData.phone.trim()) {
             newErrors.phone = "Phone number is required";
-        } else if (!/^[+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/[\s\-$$$$]/g, ""))) {
+        } else if (!/^[+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/[\s\-]/g, ""))) {
             newErrors.phone = "Please enter a valid phone number";
         }
 
@@ -88,8 +87,17 @@ export default function ContactPage() {
         setSubmitStatus("idle");
 
         try {
-            await new Promise((resolve) => setTimeout(resolve, 2000));
-            console.log("Form submitted:", formData);
+            const response = await fetch('/api/send', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.message || 'Failed to send email');
+            }
 
             setSubmitStatus("success");
             setFormData({
@@ -99,7 +107,7 @@ export default function ContactPage() {
                 phone: "",
                 message: "",
             });
-        } catch (error) {
+        } catch (error: any) {
             console.error("Submission error:", error);
             setSubmitStatus("error");
         } finally {
