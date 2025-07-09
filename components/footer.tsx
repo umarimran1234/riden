@@ -53,7 +53,7 @@ export default function Footer() {
     const policyLinks = [
         { name: "Terms & Conditions", href: "/terms" },
         { name: "Privacy Policy", href: "/terms" },
-        { name: "Cookies", href: "/cookies" },
+        { name: "Cookies", href: "/terms" },
     ]
 
     return (
