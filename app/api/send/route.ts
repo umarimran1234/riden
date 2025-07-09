@@ -79,7 +79,7 @@ export async function POST(req: Request) {
         // Send email
         await transporter.sendMail({
             from: `"Riden Support" <${process.env.SMTP_USER}>`,
-            to: 'umartkd989@gmail.com',
+            to: 'contact@riden.online',
             subject: `New Contact Form Submission from ${firstName} ${lastName}`,
             html: htmlContent,
         });
