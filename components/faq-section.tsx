@@ -37,7 +37,7 @@ const faqData: FAQItem[] = [
     },
     {
         id: 5,
-        question: ": How do I talk to my driver?",
+        question: "How do I talk to my driver?",
         answer:
             " After booking a ride, you can call or message your driver directly from the app.",
     },
@@ -82,7 +82,7 @@ export default function FAQSection() {
                     </motion.h2>
 
                     <motion.p
-                        className="text-black text-base sm:text-lg lg:text-xl font-outfit leading-relaxed max-w-2xl mx-auto"
+                        className="text-black text-base sm:text-lg lg:text-[18px] font-outfit leading-relaxed max-w-2xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
@@ -119,7 +119,7 @@ export default function FAQSection() {
                                     }`}
                                 whileTap={{ scale: 0.98 }}
                             >
-                                <span className=" text-sm sm:text-base lg:text-lg font-bebas tracking-wide leading-tight pr-4">
+                                <span className=" text-sm sm:text-base lg:text-[24px] font-bebas tracking-wide leading-tight pr-4">
                                     {item.question}
                                 </span>
 
@@ -154,7 +154,7 @@ export default function FAQSection() {
                                             exit={{ y: -20 }}
                                             transition={{ duration: 0.3, delay: 0.1 }}
                                         >
-                                            <p className="text-white text-sm sm:text-base lg:text-lg font-outfit leading-relaxed">
+                                            <p className="text-white text-sm sm:text-base lg:text-[18px] font-outfit leading-relaxed">
                                                 {item.answer}
                                             </p>
                                         </motion.div>

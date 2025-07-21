@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 export default function EarnWithRiden() {
     return (
         <section className="bg-white  py-8 sm:py-12 px-4 sm:px-6 md:px-12   min-h-screen flex flex-col justify-center">
-            <div className="w-full" >
+            <div className="w-full container" >
 
                 <h2 className="text-4xl mb-3 sm:text-5xl md:text-6xl lg:text-7xl uppercase font-bebas text-black text-start lg:text-left">
                     Earn with <span className="text-[#F80F0F]">Riden</span> — Drive on Your Terms

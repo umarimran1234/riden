@@ -87,7 +87,8 @@ export default function SafetySection() {
 
                             {/* Main Title */}
                             <motion.h3
-                                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4 sm:mb-6 font-bebas tracking-wide leading-tight"
+
+                                className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] text-black mb-4 sm:mb-6 font-bebas tracking-wide leading-tight"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.8 }}

@@ -45,7 +45,7 @@ export default function AppDownloadSection() {
                     >
                         {/* Tagline */}
                         <motion.p
-                            className="text-[#F80F0F] text-sm sm:text-base lg:text-lg font-medium font-outfit"
+                            className="text-[#F80F0F] text-sm sm:text-base lg:text-[16px] font-medium font-outfit"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.1 }}
@@ -56,7 +56,7 @@ export default function AppDownloadSection() {
 
                         {/* Main Heading */}
                         <motion.h2
-                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl  text-white mb-4 sm:mb-6 font-bebas tracking-wide leading-tight"
+                            className="text-3xl sm:text-4xl md:text-5xl lg:text-[70px]  text-white mb-4 sm:mb-6 font-bebas tracking-wide leading-tight"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}

@@ -169,10 +169,10 @@ export default function TestimonialsSlider() {
 
                                             </div>
                                             <div>
-                                                <h3 className=" text-black text-2xl sm:text-base lg:text-2xl font-bebas tracking-wide">
+                                                <h3 className=" text-black text-2xl sm:text-base lg:text-[40px] font-bebas tracking-wide">
                                                     {testimonial.name}
                                                 </h3>
-                                                <p className="text-black text-xs sm:text-sm lg:text-base font-outfit">
+                                                <p className="text-black text-xs  sm:text-sm lg:text-[18px] font-outfit">
                                                     {testimonial.title}, {testimonial.company}
                                                 </p>
                                             </div>
@@ -213,7 +213,7 @@ export default function TestimonialsSlider() {
                     <div className="flex lg:hidden items-center justify-center space-x-4 mt-8">
                         <motion.button
                             onClick={prevSlide}
-                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white text-white hover:bg-white hover:text-[#F80F0F] transition-all duration-300 flex items-center justify-center"
+                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-black text-black hover:bg-white hover:text-[#F80F0F] transition-all duration-300 flex items-center justify-center"
                             whileTap={{ scale: 0.95 }}
                             disabled={currentIndex === 0}
                         >
